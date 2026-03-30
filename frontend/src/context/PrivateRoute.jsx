@@ -25,7 +25,7 @@ const PrivateRoute = () => {
     // return isAuthorized ? <Layout /> : <Navigate to={'/login'} />
     return loading ?
         <div>
-            <h1 className='skeleton-text text-center text-3xl'>Loading . . . . </h1>
+            <h1 className='skeleton-text skeleton text-center text-3xl'>Loading . . . . </h1>
             <div className='flex justify-center py-8'>
                 <Loading />
             </div>
