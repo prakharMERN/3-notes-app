@@ -3,12 +3,14 @@ import { useNote } from '../hooks/useNote';
 import { useState } from 'react';
 import EditNote from './EditNote';
 const Note = ({ note }) => {
+    const uniqueId = Date.now()
+
     const { deleteNote, setNotesChanged } = useNote()
 
     const [loadingDelete, setLoadingDelete] = useState(false)
 
     const handleClick = () => {
-        document.getElementById(note._id).showModal()
+        document.getElementById(uniqueId).showModal()
     }
 
     const handleDelete = async () => {
@@ -29,7 +31,9 @@ const Note = ({ note }) => {
                 <div className='relative top-4 right-4 flex gap-4 flex-row-reverse' >
                     {loadingDelete ? <Loader color='red' /> : <Trash2 onClick={handleDelete} className='text-error cursor-pointer hover:text-red-500' />}
                     {/* <SquarePen className='text-info cursor-pointer hover:text-blue-500' /> */}
-                    <EditNote note={note} />
+                    <div>
+                        <EditNote note={note} />
+                    </div>
                 </div>
 
                 <div onClick={handleClick} className="card-body min-h-36 cursor-pointer">
@@ -39,7 +43,7 @@ const Note = ({ note }) => {
                     </p>
                 </div>
             </div>
-            <dialog id={note._id} className='modal'>
+            <dialog id={uniqueId} className='modal'>
                 <div className='modal-box'>
                     <div className="card-body">
                         <h4 className="card-title">{note.title}</h4>
