@@ -26,6 +26,10 @@ app.use(responseHandler)
 app.use('/users/', userRouter)
 app.use('/notes', auth, notesRouter)
 
+app.get("/health", (req, res) => {
+  res.send("OK");
+});
+
 app.use(noRoute)
 app.use(errorHandler)
 
